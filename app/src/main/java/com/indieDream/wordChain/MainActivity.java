@@ -1,6 +1,7 @@
 package com.indieDream.wordChain;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,11 +13,14 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabReselectListener;
+import com.roughike.bottombar.OnTabSelectListener;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView messageView;
-//
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,26 +46,24 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         viewPagerTab.setViewPager(viewPager);
 
+        messageView = (TextView) findViewById(R.id.messageView);
 
-//
-//        messageView = (TextView) findViewById(R.id.messageView);
-//
-//        final BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
-//        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-//            @Override
-//            public void onTabSelected(@IdRes int tabId) {
-//                // messageView.setText(TabMessage.get(tabId, false));
-//            }
-//        });
-//
-//        bottomBar.setOnTabReselectListener(new OnTabReselectListener() {
-//            @Override
-//            public void onTabReSelected(@IdRes int tabId) {
-//                //  Toast.makeText(getApplicationContext(), TabMessage.get(tabId, true), Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-////        BottomBarTab nearby = bottomBar.getTabWithId(R.id.tab);
-//        //   nearby.setBadgeCount(5);
+        final BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
+        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelected(@IdRes int tabId) {
+                // messageView.setText(TabMessage.get(tabId, false));
+            }
+        });
+
+        bottomBar.setOnTabReselectListener(new OnTabReselectListener() {
+            @Override
+            public void onTabReSelected(@IdRes int tabId) {
+                //  Toast.makeText(getApplicationContext(), TabMessage.get(tabId, true), Toast.LENGTH_LONG).show();
+            }
+        });
+
+//        BottomBarTab nearby = bottomBar.getTabWithId(R.id.tab);
+        //   nearby.setBadgeCount(5);
     }
 }
