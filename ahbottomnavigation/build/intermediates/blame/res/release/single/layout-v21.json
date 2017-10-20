@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Users\\kjw19\\AndroidStudioProjects\\WordChain\\ahbottomnavigation\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\kjw19\\.android\\build-cache\\c08358d445938b14094e16d367ea18ca6e388335\\output\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\kjw19\\AndroidStudioProjects\\WordChain\\ahbottomnavigation\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\kjw19\\.android\\build-cache\\c08358d445938b14094e16d367ea18ca6e388335\\output\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\Users\\kjw19\\AndroidStudioProjects\\WordChain\\ahbottomnavigation\\build\\intermediates\\res\\merged\\release\\layout-v21\\bottom_navigation_small_item.xml",
+        "source": "C:\\Users\\kjw19\\AndroidStudioProjects\\WordChain\\ahbottomnavigation\\src\\main\\res\\layout-v21\\bottom_navigation_small_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\kjw19\\AndroidStudioProjects\\WordChain\\ahbottomnavigation\\build\\intermediates\\res\\merged\\release\\layout-v21\\bottom_navigation_item.xml",
+        "source": "C:\\Users\\kjw19\\AndroidStudioProjects\\WordChain\\ahbottomnavigation\\src\\main\\res\\layout-v21\\bottom_navigation_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\kjw19\\AndroidStudioProjects\\WordChain\\ahbottomnavigation\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\kjw19\\.android\\build-cache\\c08358d445938b14094e16d367ea18ca6e388335\\output\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\kjw19\\AndroidStudioProjects\\WordChain\\ahbottomnavigation\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\kjw19\\.android\\build-cache\\c08358d445938b14094e16d367ea18ca6e388335\\output\\res\\layout-v21\\notification_action_tombstone.xml"
+    }
+]
