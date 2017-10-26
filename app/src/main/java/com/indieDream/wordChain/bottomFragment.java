@@ -45,126 +45,65 @@ public class bottomFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (getArguments().getInt("index", 0) == 0) {
             View view = inflater.inflate(R.layout.join_page, container, false);
-           // initDemoSettings(view);
+            initHomeList(view);
             return view;
         } else {
-            View view = inflater.inflate(R.layout.join_page, container, false);
-            initDemoList(view);
-
+            View view = inflater.inflate(R.layout.rank_page, container, false);
+            initRankList(view);
             return view;
         }
     }
-
-    /**
-     * Init demo settings
-     */
-//    private void initDemoSettings(View view) {
-//
-//        final MainActivity demoActivity = (MainActivity) getActivity();
-//        final SwitchCompat switchColored = (SwitchCompat) view.findViewById(R.id.fragment_demo_switch_colored);
-//        final SwitchCompat switchFiveItems = (SwitchCompat) view.findViewById(R.id.fragment_demo_switch_five_items);
-//        final SwitchCompat showHideBottomNavigation = (SwitchCompat) view.findViewById(R.id.fragment_demo_show_hide);
-//        final SwitchCompat showSelectedBackground = (SwitchCompat) view.findViewById(R.id.fragment_demo_selected_background);
-//        final SwitchCompat switchForceTitleHide = (SwitchCompat) view.findViewById(R.id.fragment_demo_force_title_hide);
-//        final SwitchCompat switchTranslucentNavigation = (SwitchCompat) view.findViewById(R.id.fragment_demo_translucent_navigation);
-//
-//        switchColored.setChecked(demoActivity.isBottomNavigationColored());
-//        switchFiveItems.setChecked(demoActivity.getBottomNavigationNbItems() == 5);
-//        switchTranslucentNavigation.setChecked(getActivity()
-//                .getSharedPreferences("shared", Context.MODE_PRIVATE)
-//                .getBoolean("translucentNavigation", false));
-//        switchTranslucentNavigation.setVisibility(
-//                Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? View.VISIBLE : View.GONE);
-//
-//        switchTranslucentNavigation.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                getActivity()
-//                        .getSharedPreferences("shared", Context.MODE_PRIVATE)
-//                        .edit()
-//                        .putBoolean("translucentNavigation", isChecked)
-//                        .apply();
-//                demoActivity.reload();
-//            }
-//        });
-//        switchColored.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                demoActivity.updateBottomNavigationColor(isChecked);
-//            }
-//        });
-//        switchFiveItems.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                demoActivity.updateBottomNavigationItems(isChecked);
-//            }
-//        });
-//        showHideBottomNavigation.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                demoActivity.showOrHideBottomNavigation(isChecked);
-//            }
-//        });
-//        showSelectedBackground.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                demoActivity.updateSelectedBackgroundVisibility(isChecked);
-//            }
-//        });
-//        switchForceTitleHide.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                demoActivity.setForceTitleHide(isChecked);
-//            }
-//        });
-//    }
 
     /**
      * Init the fragment
      */
 
 
-        private void initDemoList(View view) {
+    private void initHomeList(View view) {
 
-//        fragmentContainer = (FrameLayout) view.findViewById(R.id.fragment_container);
-//        recyclerView = (RecyclerView) view.findViewById(R.id.fragment_demo_recycler_view);
-//        recyclerView.setHasFixedSize(true);
-//        layoutManager = new LinearLayoutManager(getActivity());
-//        recyclerView.setLayoutManager(layoutManager);
-//
-//        ArrayList<String> itemsData = new ArrayList<>();
-//        for (int i = 0; i < 50; i++) {
-//            itemsData.add("Fragment " + getArguments().getInt("index", -1) + " / Item " + i);
-//        }
-//
-//        DemoAdapter adapter = new DemoAdapter(itemsData);
-//        recyclerView.setAdapter(adapter);
+        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        toolbar.setTitle("Demo");
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
+        ViewGroup tab = (ViewGroup) view.findViewById(R.id.tab);
+        tab.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_basic, tab, false));
 
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        SmartTabLayout viewPagerTab = (SmartTabLayout) view.findViewById(R.id.viewpagertab);
 
+        FragmentPagerItems pages = new FragmentPagerItems(getActivity());
+        pages.add(FragmentPagerItem.of("我参与的", DemoFragment.class));
+        pages.add(FragmentPagerItem.of("我围观的", DemoFragment.class));
 
-            Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-            toolbar.setTitle("Demo");
-            ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-           // setSupportActionBar(toolbar);
+        FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
+                getFragmentManager(), pages);
 
-            ViewGroup tab = (ViewGroup) view.findViewById(R.id.tab);
-            tab.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_basic, tab, false));
+        viewPager.setAdapter(adapter);
+       viewPagerTab.setViewPager(viewPager);
+    }
 
-            ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
-            SmartTabLayout viewPagerTab = (SmartTabLayout) view.findViewById(R.id.viewpagertab);
+    private void initRankList(View view) {
 
-            FragmentPagerItems pages = new FragmentPagerItems(getActivity());
-            pages.add(FragmentPagerItem.of("我参与的", DemoFragment.class));
-            pages.add(FragmentPagerItem.of("我围观的", DemoFragment.class));
+        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        toolbar.setTitle("Demo1");
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
-            FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
-                    getFragmentManager(), pages);
+        ViewGroup tab = (ViewGroup) view.findViewById(R.id.tab);
+        tab.addView(LayoutInflater.from(getActivity()).inflate(R.layout.demo_basic, tab, false));
 
-            viewPager.setAdapter(adapter);
-            viewPagerTab.setViewPager(viewPager);
-        }
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        SmartTabLayout viewPagerTab = (SmartTabLayout) view.findViewById(R.id.viewpagertab);
 
+        FragmentPagerItems pages = new FragmentPagerItems(getActivity());
+        pages.add(FragmentPagerItem.of("最长接龙", DemoFragment.class));
+        pages.add(FragmentPagerItem.of("实力接龙", DemoFragment.class));
+
+        FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
+                getFragmentManager(), pages);
+
+        viewPager.setAdapter(adapter);
+       viewPagerTab.setViewPager(viewPager);
+    }
 
 
     /**

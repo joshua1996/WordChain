@@ -1,20 +1,13 @@
 package com.indieDream.wordChain;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
-/**
- * Created by kjw19 on 20/10/2017.
- */
-
-public class DemoAdapter extends AppCompatActivity {
+public class createRoom extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
+        setContentView(R.layout.activity_create_room);
     }
-
 }

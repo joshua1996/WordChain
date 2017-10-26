@@ -21,9 +21,6 @@ public class bottomViewPageAdapter extends FragmentPagerAdapter {
         fragments.clear();
         fragments.add(bottomFragment.newInstance(0));
         fragments.add(bottomFragment.newInstance(1));
-        fragments.add(bottomFragment.newInstance(2));
-        fragments.add(bottomFragment.newInstance(3));
-        fragments.add(bottomFragment.newInstance(4));
     }
 
     @Override

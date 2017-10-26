@@ -2,20 +2,17 @@ package com.indieDream.wordChain;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
 import android.widget.TextView;
 
@@ -24,10 +21,6 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 import com.aurelhubert.ahbottomnavigation.notification.AHNotification;
-import com.ogaclejapan.smarttablayout.SmartTabLayout;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
-import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
 import java.util.ArrayList;
 
@@ -55,33 +48,10 @@ public class MainActivity extends AppCompatActivity {
                 .getBoolean("translucentNavigation", false);
         setContentView(R.layout.activity_main);
 
-
         initUI();
     }
 
-    private void initTabLayout()
-    {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Demo");
-        setSupportActionBar(toolbar);
 
-        ViewGroup tab = (ViewGroup) findViewById(R.id.tab);
-        tab.addView(LayoutInflater.from(this).inflate(R.layout.demo_basic, tab, false));
-
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        SmartTabLayout viewPagerTab = (SmartTabLayout) findViewById(R.id.viewpagertab);
-
-        FragmentPagerItems pages = new FragmentPagerItems(this);
-        pages.add(FragmentPagerItem.of("我参与的", DemoFragment.class));
-        pages.add(FragmentPagerItem.of("我围观的", DemoFragment.class));
-
-        FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(
-                getSupportFragmentManager(), pages);
-
-        viewPager.setAdapter(adapter);
-        viewPagerTab.setViewPager(viewPager);
-
-    }
 
     private void initUI() {
 
@@ -112,6 +82,12 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.manageFloatingActionButtonBehavior(floatingActionButton);
         bottomNavigation.setTranslucentNavigationEnabled(true);
 
+        floatingActionButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, createRoom.class));
+            }
+        });
+
         bottomNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
@@ -138,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 currentFragment = adapter.getCurrentFragment();
                 currentFragment.willBeDisplayed();
 
-                if (position == 1) {
+                if (position == 0 || position == 1) {
                     bottomNavigation.setNotification("", 1);
 
                     floatingActionButton.setVisibility(View.VISIBLE);
@@ -175,8 +151,13 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             })
                             .start();
+                    floatingActionButton.setOnClickListener(new View.OnClickListener(){
+                        public void onClick(View v) {
+                            startActivity(new Intent(MainActivity.this, createRoom.class));
+                        }
+                    });
 
-                } else {
+                } else if (position == 2){
                     if (floatingActionButton.getVisibility() == View.VISIBLE) {
                         floatingActionButton.animate()
                                 .alpha(0)

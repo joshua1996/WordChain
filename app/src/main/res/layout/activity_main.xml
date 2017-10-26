@@ -3,53 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:background="@color/color_tab_2"
     >
 
-    <LinearLayout
-        android:id="@+id/header"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/primary"
-        >
-
-        <android.support.v7.widget.Toolbar
-            android:id="@id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            >
-
-        </android.support.v7.widget.Toolbar>
-
-        <FrameLayout
-            android:id="@id/tab"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
-    </LinearLayout>
-
-    <android.support.v4.view.ViewPager
-        android:id="@id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/header"
-        />
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
+        <!--<Button-->
+            <!--android:id="@+id/button"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Button" />-->
 
         <com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"  />
+            android:layout_alignParentBottom="true"
+            />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/floating_action_button"
@@ -58,9 +33,10 @@
             android:layout_gravity="right|bottom"
             android:layout_marginBottom="88dp"
             android:src="@drawable/ic_content_add"
-            android:visibility="gone"
             app:useCompatPadding="true"
-            android:layout_alignParentBottom="true"  />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            />
 
         <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
             android:id="@+id/bottom_navigation"
@@ -68,7 +44,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             app:selectedBackgroundVisible="false"
-            android:layout_alignParentBottom="true"  />
+            android:layout_alignParentBottom="true"
+            />
 
     </RelativeLayout>
 
